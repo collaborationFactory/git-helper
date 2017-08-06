@@ -1,0 +1,22 @@
+{
+  "name": "git-helper",
+  "version": "0.0.0",
+  "description": "Some helpers for working with Git repositories based on simple-git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "git",
+    "scm",
+    "utilities"
+  ],
+  "author": "Michael Rose <michael.rose@collaboration-factory.de>",
+  "license": "MIT",
+  "dependencies": {
+    "simple-git": "^1.75.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.4.2"
+  }
+}
