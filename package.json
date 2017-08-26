@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && cp src/index.d.ts dist/"
+    "build": "rimraf dist && tsc && cp src/index.d.ts dist/"
   },
   "keywords": [
     "git",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.25",
+    "rimraf": "^2.6.1",
     "typescript": "^2.4.2"
   }
 }
