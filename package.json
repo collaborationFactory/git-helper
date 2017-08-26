@@ -1,5 +1,5 @@
 {
-  "name": "git-helper",
+  "name": "@cplace/git-helper",
   "version": "0.0.0",
   "description": "Some helpers for working with Git repositories based on simple-git",
   "main": "index.js",
