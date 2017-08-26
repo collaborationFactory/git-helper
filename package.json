@@ -4,7 +4,8 @@
   "description": "Some helpers for working with Git repositories based on simple-git",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && cp src/index.d.ts dist/"
   },
   "keywords": [
     "git",
@@ -17,6 +18,7 @@
     "simple-git": "^1.75.0"
   },
   "devDependencies": {
+    "@types/node": "^8.0.25",
     "typescript": "^2.4.2"
   }
 }
