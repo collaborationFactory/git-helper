@@ -1,6 +1,6 @@
 {
   "name": "@cplace/git-helper",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Some helpers for working with Git repositories based on simple-git",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
