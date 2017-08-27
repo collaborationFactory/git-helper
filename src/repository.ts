@@ -29,7 +29,7 @@ export class Repository {
         this.repoName = path.basename(path.resolve(repoPath));
     }
 
-    public log(fromHash?: string, toHash?: string): Promise<IGitLogSummary> {
+    public async log(fromHash?: string, toHash?: string): Promise<IGitLogSummary> {
         return new Promise<IGitLogSummary>((resolve, reject) => {
             this.git.log(
                 {
@@ -51,7 +51,7 @@ export class Repository {
         });
     }
 
-    public logLast(size: number): Promise<IGitLogSummary> {
+    public async logLast(size: number): Promise<IGitLogSummary> {
         return new Promise<IGitLogSummary>((resolve, reject) => {
             this.git.log(['-n', size + ''], (err: any, data: IGitLogSummary) => {
                 err ? reject(err) : resolve(data);
@@ -59,7 +59,7 @@ export class Repository {
         });
     }
 
-    public commitExists(hash: string): Promise<string> {
+    public async commitExists(hash: string): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             Global.isVerbose() && console.log('Checking commit existence for', hash);
             this.git.revparse(['-q', '--verify', `${hash}^{commit}`], (err: any, data: string) => {
@@ -68,7 +68,7 @@ export class Repository {
         });
     }
 
-    public fetch(): Promise<void> {
+    public async fetch(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             this.git.fetch((err) => {
                 if (err) {
@@ -81,7 +81,7 @@ export class Repository {
         });
     }
 
-    public status(): Promise<IGitStatus> {
+    public async status(): Promise<IGitStatus> {
         return new Promise<IGitStatus>((resolve, reject) => {
             this.git.status((err: any, status: IGitStatus) => {
                 if (err) {
@@ -94,7 +94,7 @@ export class Repository {
         });
     }
 
-    public checkoutBranch(branch: string): Promise<void> {
+    public async checkoutBranch(branch: string): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             Global.isVerbose() && console.log(`checkout ${this.repoName}, in branch `, branch);
             this.git.checkout(branch, (err: any) => {
@@ -108,7 +108,7 @@ export class Repository {
         });
     }
 
-    public checkoutCommit(commit: string): Promise<void> {
+    public async checkoutCommit(commit: string): Promise<void> {
         if (commit) {
             return new Promise<void>((resolve, reject) => {
                 this.git.checkout(commit, (err: any) => {
@@ -126,7 +126,7 @@ export class Repository {
         }
     }
 
-    public pullOnlyFastForward(): Promise<void> {
+    public async pullOnlyFastForward(): Promise<void> {
         return this.status()
             .then(({tracking}) => {
                 const i = tracking.indexOf('/');
@@ -150,7 +150,7 @@ export class Repository {
             });
     }
 
-    public resetHard(): Promise<void> {
+    public async resetHard(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             this.git.reset('hard', (err: any) => {
                 if (err) {
@@ -163,7 +163,7 @@ export class Repository {
         });
     }
 
-    public getCurrentCommitHash(): Promise<string> {
+    public async getCurrentCommitHash(): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             this.git.revparse(['HEAD'], (err: any, commit: string) => {
                 if (err) {
