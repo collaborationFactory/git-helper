@@ -30,4 +30,4 @@ Pull Requests and Issues are welcome!
 
 ## License
 
-MIT - see [LICENSE](LICENSE.md).
+MIT - see [LICENSE](LICENSE).
